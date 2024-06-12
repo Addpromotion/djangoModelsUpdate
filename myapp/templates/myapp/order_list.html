@@ -1,0 +1,7 @@
+<h1>Список заказов</h1>
+<ul>
+    {% for order in orders %}
+        <li>{{ order.customer.name }} - <a href="{% url 'delete_order' order.id %}">Удалить</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_order' %}">Добавить заказ</a>

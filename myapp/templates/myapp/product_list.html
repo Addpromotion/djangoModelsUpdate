@@ -1,0 +1,7 @@
+<h1>Список продуктов</h1>
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }} - <a href="{% url 'delete_product' product.id %}">Удлаить</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_product' %}">Добавить продукт</a>

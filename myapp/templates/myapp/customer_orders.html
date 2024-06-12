@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказы клиента</title>
+</head>
+<body>
+    <h1>Продукты, заказанные клиентом {{ customer.name }} за последний {{ period }}</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.description }} - ${{ product.price }}</li>
+        {% empty %}
+            <li>Нет заказов за указанный период по данному клиенту</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'customer_list' %}">Назад к списку клиентов</a>
+</body>
+</html>

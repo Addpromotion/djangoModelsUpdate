@@ -1,0 +1,13 @@
+<h1>Лист клиентов</h1>
+<ul>
+    {% for customer in customers %}
+        <li>
+            {{ customer.name }} -
+            <a href="{% url 'delete_customer' customer.id %}">Удалить</a> |
+            <a href="{% url 'customer_orders' customer.id 'week' %}">Лист заказов за 7 дней</a> |
+            <a href="{% url 'customer_orders' customer.id 'month' %}">Лист заказов за последний месяц</a> |
+            <a href="{% url 'customer_orders' customer.id 'year' %}">Лист заказов за последний год</a>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_customer' %}">Добавить клиента</a>
