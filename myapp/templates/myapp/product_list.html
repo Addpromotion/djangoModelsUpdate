@@ -1,7 +1,12 @@
 <h1>Список продуктов</h1>
 <ul>
     {% for product in products %}
-        <li>{{ product.name }} - <a href="{% url 'delete_product' product.id %}">Удлаить</a></li>
+        <li>
+            {% if product.photo %}
+                <img src="{{ product.photo.url }}" alt="{{ product.name }}" style="max-width: 100px;">
+            {% endif %}
+            {{ product.name }} - <a href="{% url 'delete_product' product.id %}">Удалить</a>
+        </li>
     {% endfor %}
 </ul>
 <a href="{% url 'add_product' %}">Добавить продукт</a>

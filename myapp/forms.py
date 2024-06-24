@@ -9,7 +9,7 @@ class CustomerForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = ['name', 'description', 'price', 'quantity', 'photo']
 
 class OrderForm(forms.ModelForm):
     class Meta:
