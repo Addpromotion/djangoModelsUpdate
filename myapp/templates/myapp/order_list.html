@@ -1,7 +1,26 @@
-<h1>Список заказов</h1>
-<ul>
-    {% for order in orders %}
-        <li>{{ order.customer.name }} - <a href="{% url 'delete_order' order.id %}">Удалить</a></li>
-    {% endfor %}
-</ul>
-<a href="{% url 'add_order' %}">Добавить заказ</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ЛИСТ ЗАКАЗОВ</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">ЛИСТ ЗАКАЗОВ</h1>
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <span class="item-number">{{ forloop.counter|add:"00" }}</span>
+                    <span class="item-title">{{ order.customer.name }} - {{ order.total_amount }} - {{ order.order_date }}</span>
+                    <div class="nav-links">
+                        <a href="{% url 'delete_order' order.id %}">УДАЛИТЬ</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_order' %}">Добавить заказ</a>
+        <a href="{% url 'home' %}">На стартовую страницу</a>
+    </div>
+</body>
+</html>

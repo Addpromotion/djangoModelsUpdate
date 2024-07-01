@@ -1,12 +1,29 @@
-<h1>Список продуктов</h1>
-<ul>
-    {% for product in products %}
-        <li>
-            {% if product.photo %}
-                <img src="{{ product.photo.url }}" alt="{{ product.name }}" style="max-width: 100px;">
-            {% endif %}
-            {{ product.name }} - <a href="{% url 'delete_product' product.id %}">Удалить</a>
-        </li>
-    {% endfor %}
-</ul>
-<a href="{% url 'add_product' %}">Добавить продукт</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ЛИСТ ПРОДУКТОВ</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">ЛИСТ ПРОДУКТОВ</h1>
+        <ul>
+            {% for product in products %}
+                <li>
+                    {% if product.photo %}
+                        <img src="{{ product.photo.url }}" alt="{{ product.name }}" style="max-width: 100px;">
+                    {% endif %}
+                    <span class="item-number">{{ forloop.counter|add:"00" }}</span>
+                    <span class="item-title">{{ product.name }}</span>
+                    <div class="nav-links">
+                        <a href="{% url 'delete_product' product.id %}">УДАЛИТЬ</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_product' %}">Добавить продукт</a>
+        <a href="{% url 'home' %}">На стартовую страницу</a>
+    </div>
+</body>
+</html>

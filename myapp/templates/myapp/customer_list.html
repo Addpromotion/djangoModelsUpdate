@@ -1,13 +1,29 @@
-<h1>Лист клиентов</h1>
-<ul>
-    {% for customer in customers %}
-        <li>
-            {{ customer.name }} -
-            <a href="{% url 'delete_customer' customer.id %}">Удалить</a> |
-            <a href="{% url 'customer_orders' customer.id 'week' %}">Лист заказов за 7 дней</a> |
-            <a href="{% url 'customer_orders' customer.id 'month' %}">Лист заказов за последний месяц</a> |
-            <a href="{% url 'customer_orders' customer.id 'year' %}">Лист заказов за последний год</a>
-        </li>
-    {% endfor %}
-</ul>
-<a href="{% url 'add_customer' %}">Добавить клиента</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ЛИСТ КЛИЕНТОВ</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">ЛИСТ КЛИЕНТОВ</h1>
+        <ul>
+            {% for customer in customers %}
+                <li>
+                    <span class="item-number">{{ forloop.counter|add:"00" }}</span>
+                    <span class="item-title">{{ customer.name }}</span>
+                    <div class="nav-links">
+                        <a href="{% url 'delete_customer' customer.id %}">УДАЛИТЬ</a>
+                        <a href="{% url 'customer_orders' customer.id 'week' %}">Заказы за прошлую неделю</a>
+                        <a href="{% url 'customer_orders' customer.id 'month' %}">Заказы за прошлый месяц</a>
+                        <a href="{% url 'customer_orders' customer.id 'year' %}">Заказы за прошлый год</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_customer' %}">Добавить клиента</a>
+        <a href="{% url 'home' %}">На стартовую страницу</a>
+    </div>
+</body>
+</html>
