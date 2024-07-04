@@ -91,12 +91,11 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'addpromotion$default',
         'USER': 'addpromotion',
         'PASSWORD': os.getenv('MYSQL_PASSWORD'),
         'HOST': 'addpromotion.mysql.pythonanywhere-services.com',
-
     }
 }
 
