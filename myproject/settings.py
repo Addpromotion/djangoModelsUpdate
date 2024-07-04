@@ -24,13 +24,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%zn2tt!^&8m^ev577z!-8%0mphe34&a0c9-iejv1t8o_7#o17t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['AddPromotion.pythonanywhere.com']
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-STATIC_ROOT = BASE_DIR / 'static'
-MEDIA_ROOT = BASE_DIR / 'media'
+ALLOWED_HOSTS = [
 
+    'localhost',
+    '127.0.0.1',
+    'addpromotion.pythonanywhere.com',
+
+]
+
+INTERNAL_IPS = [
+
+    '127.0.0.1',
+
+]
 
 # Application definition
 
@@ -80,8 +91,12 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sql',
+        'NAME': 'addpromotion$default',
+        'USER': 'addpromotion',
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+        'HOST': 'addpromotion.mysql.pythonanywhere-services.com',
+
     }
 }
 
