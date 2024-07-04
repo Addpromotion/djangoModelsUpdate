@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-%zn2tt!^&8m^ev577z!-8%0mphe34&a0c9-iejv1t8o_7#o17t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['AddPromotion.pythonanywhere.com']
+
+STATIC_ROOT = BASE_DIR / 'static'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Application definition
